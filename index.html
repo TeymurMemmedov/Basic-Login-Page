@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login səhifəsi</h1>
+        <form>
+          <div class="form-group">
+            <label for="username">İstifadəçi adı:</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Şifrə:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="button" id="login-btn">Daxil ol</button>
+        </form>
+      </div>
+      
+      <div class="overlay"></div>
+      
+        <div id="save-dialog" class="dialog">
+          <p>Giriş məlumatlarını yadda saxlamaq istəyirsən?</p>
+          <div class="buttons">
+            <button type="button" id="save-btn">Saxla</button>
+            <button type="button" id="cancel-btn">Ləğv et</button>
+          </div>
+        </div>
+
+        <div id="error-dialog" class="dialog">
+            
+            <p id="error-msg">Yanlış ad və ya istifadəçi adı. Yenidən cəhd edin.</p>
+            <button type="button" id="error-ok-btn">OK</button>
+        </div>
+
+
+        
+
+    <script>
+        // Get DOM elements
+const loginBtn = document.querySelector('#login-btn');
+const saveBtn = document.querySelector('#save-btn');
+const cancelBtn = document.querySelector('#cancel-btn');
+const okBtn = document.querySelector('#error-ok-btn');
+const overlay = document.querySelector('.overlay');
+const correctInput = document.querySelector('#save-dialog');
+const errorMsg = document.querySelector('#error-dialog');
+
+
+// Add click event listener to login button
+loginBtn.addEventListener('click', function() {
+  // Get username and password values
+  const username = document.querySelector('#username').value;
+  const password = document.querySelector('#password').value;
+
+  // Check if username and password are correct
+  if (username === 'salam' && password === '123') {
+    // Show dialog box and overlay
+    correctInput.style.display = 'block';
+    overlay.style.display = 'block';
+  } else {
+    // Show error message in a dialog box
+    errorMsg.style.display = 'block';
+    overlay.style.display = 'block';
+  }
+});
+
+// Add click event listener to save button
+saveBtn.addEventListener('click', function() {
+  // TODO: Add code to save login data
+  alert('Məlumatlar saxlandı');
+  // Hide dialog box, overlay, and error message
+  correctInput.style.display = 'none';
+  overlay.style.display = 'none';
+});
+
+cancelBtn.addEventListener('click',function(){
+    correctInput.style.display = 'none';
+  overlay.style.display = 'none';
+});
+
+// Add click event listener to cancel button
+okBtn.addEventListener('click', function() {
+  // Hide dialog box, overlay, and error message
+  overlay.style.display = 'none';
+  errorMsg.style.display = 'none';
+});
+
+
+    </script>
+  </body>
+  
+</html>
